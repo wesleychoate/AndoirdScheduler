@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.course.CourseDetailActivity">
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/courseDetailContainer">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/courseTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:hint="@string/course_name_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/courseStartDate"
+        android:layout_margin="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/course_start_label"
+        app:helperText="@string/date_format"
+        app:layout_constraintWidth_percent=".7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/courseTitle"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/courseStartDateNotification"
+        android:layout_margin="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/assessment_notification"
+        android:layout_marginLeft="24dp"
+        app:layout_constraintLeft_toRightOf="@id/courseStartDate"
+        app:layout_constraintBaseline_toBaselineOf="@id/courseStartDate"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/courseEndDate"
+        android:layout_margin="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/course_end_label"
+        app:helperText="@string/date_format"
+        app:layout_constraintWidth_percent=".7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/courseStartDate"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/courseEndDateNotification"
+        android:layout_margin="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/assessment_notification"
+        android:layout_marginLeft="24dp"
+        app:layout_constraintLeft_toRightOf="@id/courseEndDate"
+        app:layout_constraintBaseline_toBaselineOf="@id/courseEndDate"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/courseStatusContainer"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:hint="@string/course_status_label"
+        android:labelFor="@id/courseStatus"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/courseEndDate">
+
+        <AutoCompleteTextView
+            android:id="@+id/courseStatus"
+            android:inputType="none"
+            android:editable="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/courseMentorContainer"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:hint="@string/course_mentor_label"
+        android:labelFor="@id/courseMentor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/courseStatusContainer">
+
+        <AutoCompleteTextView
+            android:id="@+id/courseMentor"
+            android:inputType="none"
+            android:editable="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/courseNotes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:hint="Notes"
+        app:layout_constraintWidth_percent=".7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/courseMentorContainer"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:inputType="textMultiLine"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:lines="5"
+            android:minLines="3"
+            android:gravity="top|left"
+            android:maxLines="5"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageButton
+        android:contentDescription="Share"
+        android:id="@+id/shareButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_share_24"
+        android:enabled="false"
+        android:onClick="shareNote"
+        android:layout_marginLeft="12dp"
+        app:layout_constraintBaseline_toBaselineOf="@id/courseNotes"
+        app:layout_constraintLeft_toRightOf="@id/courseNotes"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/assessmentDetailContainer"
+    tools:context=".ui.assessment.AssessmentDetailActivity">
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/assessmentDetailLayout">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_margin="8dp"
+        android:id="@+id/assessmentTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/mentor_tip_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <RadioGroup
+        android:id="@+id/assessmentType"
+        android:layout_margin="8dp"
+        android:checkedButton="@+id/radio_button_objective"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/assessmentTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/radio_button_objective"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/assessment_type_objective"/>
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/radio_button_performance"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/assessment_type_performance"/>
+    </RadioGroup>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/dueDateField"
+        android:layout_margin="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/assessment_due_date"
+        app:helperText="@string/date_format"
+        app:layout_constraintWidth_percent=".7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/assessmentType"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/assessmentNotification"
+        android:layout_margin="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/assessment_notification"
+        android:layout_marginLeft="24dp"
+        app:layout_constraintLeft_toRightOf="@id/dueDateField"
+        app:layout_constraintBaseline_toBaselineOf="@id/dueDateField"/>
+
+    <Button
+        android:id="@+id/asmSaveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="48dp"
+        android:text="@string/save_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/assessmentNotification" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

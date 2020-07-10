@@ -1,0 +1,43 @@
+<resources>
+    <string name="channel_name">FINAL_SCHEDULE_CHANNEL</string>
+    <string name="channel_description">Scheduler Notifications</string>
+
+    <string name="app_name">FinalScheduler</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Scheduler</string>
+    <string name="nav_header_subtitle">Course and Assessment Planner</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="date_format">mm/dd/yyyy</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_termlist">Terms</string>
+    <string name="menu_mentor">Mentors</string>
+
+    <!-- Mentor Activity Screen -->
+    <string name="mentor_add">Save Mentor</string>
+    <string name="mentor_tip_name">Name</string>
+    <string name="mentor_tip_number">Phone Number</string>
+    <string name="mentor_tip_email">Email</string>
+    <string name="save_button">Save</string>
+    <string name="mentor_save_error">Could not save. All fields required.</string>
+
+    <string name="assessment_type_objective">Objective</string>
+    <string name="assessment_type_performance">Performance</string>
+    <string name="assessment_due_date">Due Date</string>
+    <string name="assessment_notification">Notify</string>
+
+    <string name="course_name_label">Course Name</string>
+    <string name="course_start_label">Start Date</string>
+    <string name="course_end_label">Projected End Date</string>
+    <string name="course_status_label">Status</string>
+    <string name="course_mentor_label">Mentor</string>
+
+    <string name="term_title_label">Term Title</string>
+    <string name="term_start_label">Start Date</string>
+    <string name="term_end_label">End Date</string>
+
+    <string name="create_button_description">Create New</string>
+</resources>
