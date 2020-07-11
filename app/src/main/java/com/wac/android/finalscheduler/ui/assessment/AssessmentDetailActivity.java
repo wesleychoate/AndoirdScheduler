@@ -81,10 +81,6 @@ public class AssessmentDetailActivity extends AppCompatActivity {
 
         // setup title bar and prepopulate fields if edit
         if (existingAssessment != null) {
-            WorkInfo.State testing = null;
-            if (existingAssessment.getJobId() != null)
-                testing = notificationScheduler.getNotificationState(existingAssessment.getJobId());
-            Log.i("assessment", "State of notification: " + testing );
             courseId = existingAssessment.getCourseId();
             pageTitle = "Update Assessment";
             name.getEditText().setText(existingAssessment.getTitle());

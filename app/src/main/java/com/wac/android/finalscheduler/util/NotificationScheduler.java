@@ -29,20 +29,6 @@ public class NotificationScheduler {
         workManager.cancelWorkById(jobId);
     }
 
-    public WorkInfo.State getNotificationState(UUID jobId) {
-        ListenableFuture<WorkInfo> job = workManager.getWorkInfoById(jobId);
-        try {
-            WorkInfo jobInfo = job.get();
-            return jobInfo.getState();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        return null;
-    }
-
     public UUID scheduleNotification(LocalDate notifyOn, String title, String message) {
 
         LocalDateTime now = LocalDateTime.now();
