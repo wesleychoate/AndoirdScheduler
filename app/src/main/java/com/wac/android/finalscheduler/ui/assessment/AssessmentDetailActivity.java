@@ -3,37 +3,28 @@ package com.wac.android.finalscheduler.ui.assessment;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.work.OneTimeWorkRequest;
-import androidx.work.WorkInfo;
-import androidx.work.WorkManager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.google.android.material.radiobutton.MaterialRadioButton;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.textfield.TextInputLayout;
 import com.wac.android.finalscheduler.R;
 import com.wac.android.finalscheduler.entities.Assessment;
-import com.wac.android.finalscheduler.util.NotificationHelper;
 import com.wac.android.finalscheduler.util.NotificationScheduler;
 import com.wac.android.finalscheduler.util.SharedViewModel;
 import com.wac.android.finalscheduler.util.SharedViewModelFactory;
 
-import java.time.Duration;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 
 public class AssessmentDetailActivity extends AppCompatActivity {
 
@@ -92,17 +83,6 @@ public class AssessmentDetailActivity extends AppCompatActivity {
                 perfButton.setChecked(true);
             if (existingAssessment.getDueDate() != null)
                 dueDate.getEditText().setText(f.format(existingAssessment.getDueDate()));
-
-            if (existingAssessment.getJobId() != null) {
-                WorkInfo.State jobStatus = notificationScheduler.getNotificationState(existingAssessment.getJobId());
-                if (jobStatus != null) {
-                    CharSequence text = "Job " + existingAssessment.getJobId() + " status " + jobStatus.toString();
-                    int duration = Toast.LENGTH_LONG;
-
-                    Toast toast = Toast.makeText(this, text, duration);
-                    toast.show();
-                }
-            }
         }
 
         if (actionBar != null) {
@@ -187,11 +167,8 @@ public class AssessmentDetailActivity extends AppCompatActivity {
                             (selectedType == objButton ? "objective" : "performance"),
                             jobId);
 
-                    if (existingAssessment == null) {
-                        //sharedViewModel.createAssessment(savedAssessment);
-                    } else {
+                    if (existingAssessment != null) {
                         savedAssessment.setId(existingAssessment.getId());
-                        //sharedViewModel.updateAssessment(savedAssessment);
                     }
 
                     Intent replyIntent = new Intent();

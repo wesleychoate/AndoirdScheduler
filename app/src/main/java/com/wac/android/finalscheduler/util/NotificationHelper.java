@@ -2,7 +2,6 @@ package com.wac.android.finalscheduler.util;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -37,15 +36,12 @@ public class NotificationHelper extends Worker {
             int importance = NotificationManager.IMPORTANCE_HIGH;
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
             channel.setDescription(description);
-            // Register the channel with the system; you can't change the importance
-            // or other notification behaviors after this
             NotificationManager notificationManager = applicationContext.getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
 
         Intent intent = new Intent(getApplicationContext(), String.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, 0);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
                 .setSmallIcon(R.drawable.schedule_launcher_foreground)
@@ -59,7 +55,5 @@ public class NotificationHelper extends Worker {
         notificationManager.notify(id, builder.build());
 
         return Result.success();
-        // (Returning RETRY tells WorkManager to try this task again
-        // later; FAILURE says not to try again.)
     }
 }

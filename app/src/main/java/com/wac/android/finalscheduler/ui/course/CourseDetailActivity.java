@@ -373,11 +373,11 @@ public class CourseDetailActivity extends AppCompatActivity implements ItemClick
         }
 
         LocalDate now = LocalDate.now();
-        if (startRem.isChecked() && (now.isEqual(tempStartDate) || now.isAfter(tempStartDate))) {
+        if (startRem.isChecked() && (now.isAfter(tempStartDate))) {
             startDate.setHelperText("Must be in future to turn on notification.");
             return false;
         }
-        if (endRem.isChecked() && (now.isEqual(tempEndDate) || now.isAfter(tempEndDate))) {
+        if (endRem.isChecked() && (now.isAfter(tempEndDate))) {
             endDate.setHelperText("Must be in future to turn on notification.");
             return false;
         }
