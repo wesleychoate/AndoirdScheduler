@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.google.android.material.radiobutton.MaterialRadioButton;
 import com.google.android.material.switchmaterial.SwitchMaterial;
@@ -91,6 +92,17 @@ public class AssessmentDetailActivity extends AppCompatActivity {
                 perfButton.setChecked(true);
             if (existingAssessment.getDueDate() != null)
                 dueDate.getEditText().setText(f.format(existingAssessment.getDueDate()));
+
+            if (existingAssessment.getJobId() != null) {
+                WorkInfo.State jobStatus = notificationScheduler.getNotificationState(existingAssessment.getJobId());
+                if (jobStatus != null) {
+                    CharSequence text = "Job " + existingAssessment.getJobId() + " status " + jobStatus.toString();
+                    int duration = Toast.LENGTH_LONG;
+
+                    Toast toast = Toast.makeText(this, text, duration);
+                    toast.show();
+                }
+            }
         }
 
         if (actionBar != null) {
@@ -128,7 +140,7 @@ public class AssessmentDetailActivity extends AppCompatActivity {
 
         // now confirm that the due date is in the future if an alarm is being set
         LocalDate now = LocalDate.now();
-        if (reminder.isChecked() && (now.isEqual(tempDueDate) || now.isAfter(tempDueDate))) {
+        if (reminder.isChecked() && (now.isAfter(tempDueDate))) {
             dueDate.setHelperText("Must be in future to turn on notification.");
             return false;
         }

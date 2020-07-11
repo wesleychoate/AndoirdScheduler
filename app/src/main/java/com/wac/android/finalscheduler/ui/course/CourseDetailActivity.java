@@ -246,8 +246,8 @@ public class CourseDetailActivity extends AppCompatActivity implements ItemClick
                         LocalDate.parse(endDate.getEditText().getText(), f),
                         status.getEditText().getText().toString(),
                         termId,
-                        false,
-                        false,
+                        startRem.isChecked(),
+                        endRem.isChecked(),
                         selectedMentorId,
                         note.getEditText().getText().toString(),
                         jobIdSDN, jobIdEDN);

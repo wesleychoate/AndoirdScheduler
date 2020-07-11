@@ -15,9 +15,12 @@ import androidx.work.WorkerParameters;
 
 import com.wac.android.finalscheduler.R;
 
+import java.util.SplittableRandom;
+
 public class NotificationHelper extends Worker {
 
     private static final String CHANNEL_ID = "1111";
+    String GROUP_KEY_SCHEDULE = "com.wac.android.finalscheduler.GROUP";
 
     public NotificationHelper(@NonNull Context context, @NonNull WorkerParameters params) {
         super(context, params);
@@ -31,7 +34,7 @@ public class NotificationHelper extends Worker {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = applicationContext.getString(R.string.channel_name);
             String description = applicationContext.getString(R.string.channel_description);
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            int importance = NotificationManager.IMPORTANCE_HIGH;
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
             channel.setDescription(description);
             // Register the channel with the system; you can't change the importance
@@ -48,10 +51,12 @@ public class NotificationHelper extends Worker {
                 .setSmallIcon(R.drawable.schedule_launcher_foreground)
                 .setContentTitle(getInputData().getString("title"))
                 .setContentText(getInputData().getString("message"))
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                .setGroup(GROUP_KEY_SCHEDULE)
+                .setPriority(NotificationCompat.PRIORITY_HIGH);
 
+        int id = new SplittableRandom().nextInt(1, 9999999);
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getApplicationContext());
-        notificationManager.notify(20020915, builder.build());
+        notificationManager.notify(id, builder.build());
 
         return Result.success();
         // (Returning RETRY tells WorkManager to try this task again
